@@ -15,5 +15,9 @@ router.get("/products", async (req, res) => {
   }
 });
 
+router.get("/test", async (req, res) => {
+  res.json({ message: "hello there" });
+})
+
 
 module.exports = router;
