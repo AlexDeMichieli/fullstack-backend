@@ -1,0 +1,30 @@
+name: Deploy to Heroku
+
+on:
+    pull_request:
+      types: [closed]
+      branches:
+        - main  # Change this to your default branch if different
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'  # Specify the Node.js version you need
+
+      - name: Install dependencies
+        run: npm install
+        
+      - name: Deploy to Heroku
+        uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: "desolate-springs-24178" # Your Heroku app name
+          heroku_email:  ${{ secrets.HEROKU_EMAIL }}  # Your Heroku email
