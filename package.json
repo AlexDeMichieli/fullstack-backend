@@ -5,13 +5,14 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon server.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "upgrade": "npm install @alexdemichieli/fullstack-db-express-react@latest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@alexdemichieli/fullstack-db-express-react": "^1.0.5",
+    "@alexdemichieli/fullstack-db-express-react": "^1.0.7",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "nodemon": "^3.1.4"
