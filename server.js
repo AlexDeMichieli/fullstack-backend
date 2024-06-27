@@ -2,12 +2,13 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 require('dotenv').config();
-const productRoutes = require('./routes/API/products');
-const userRoutes = require('./routes/API/auth');
+const applyRoutes = require('./routes');
+
+
 app.use(express.json());
 
-app.use('/api', productRoutes);
-app.use('/api', userRoutes);
+applyRoutes(app);
+
 
 app.get('/', (req,res)=>{
     res.json({"meesage":"hello there"})
