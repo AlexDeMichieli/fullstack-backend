@@ -15,7 +15,7 @@ router.get("/products", authenticateAndAuthorize("ADMIN", "USER"), async (req, r
   }
 });
 
-router.get('/products/:id', async (req, res) => {
+router.get('/products/:id', authenticateAndAuthorize("ADMIN", "USER"), async (req, res) => {
     try {
         const { id } = req.params;
         const product = await prisma.product.findUnique({
@@ -33,7 +33,7 @@ router.get('/products/:id', async (req, res) => {
     }
 })
 
-router.delete('/products/:id', async (req, res) => {
+router.delete('/products/:id', authenticateAndAuthorize("ADMIN"), async (req, res) => {
     try {
         const { id } = req.params;
         const product = await prisma.product.delete({
@@ -51,7 +51,7 @@ router.delete('/products/:id', async (req, res) => {
     }
 })
 
-router.patch('/products/:id', async (req, res) => {
+router.patch('/products/:id', authenticateAndAuthorize("ADMIN"), async (req, res) => {
     try {
         const { id } = req.params;
         const { name, description, price, quantity } = req.body;
